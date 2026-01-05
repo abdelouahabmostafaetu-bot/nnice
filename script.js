@@ -265,11 +265,6 @@ document.addEventListener('click', (e) => {
     lastClickTime = currentTime;
 });
 
-// Welcome message
-setTimeout(() => {
-    showToast('✨ Welcome to an extraordinary journey through excellence! 🌟');
-}, 1000);
-
 // Keyboard shortcuts
 document.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowUp') {
