@@ -1,3 +1,18 @@
+// Mobile detection and optimization
+const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+// Optimize performance for mobile
+if (isMobile) {
+    // Disable heavy animations
+    document.body.classList.add('mobile-device');
+    
+    // Remove spotlight and floating shapes on mobile
+    const spotlight = document.getElementById('spotlight');
+    const floatingShapes = document.querySelector('.floating-shapes');
+    if (spotlight) spotlight.style.display = 'none';
+    if (floatingShapes) floatingShapes.style.display = 'none';
+}
+
 // Scroll progress bar
 window.addEventListener('scroll', () => {
     const scrollProgress = document.getElementById('scrollProgress');
@@ -14,7 +29,7 @@ window.addEventListener('scroll', () => {
     } else {
         scrollTop.classList.remove('visible');
     }
-});
+}, { passive: true });
 
 // Scroll to top
 document.getElementById('scrollTop').addEventListener('click', () => {

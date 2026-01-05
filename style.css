@@ -1270,40 +1270,238 @@ footer {
     }
 }
 
+/* Mobile Optimization - Smooth & Fast */
 @media (max-width: 768px) {
+    body {
+        font-size: 16px;
+        -webkit-text-size-adjust: 100%;
+        -webkit-font-smoothing: antialiased;
+    }
+    
     .page {
-        margin: 20px;
-        padding: 40px 30px;
+        margin: 10px;
+        padding: 30px 20px;
+        box-shadow: 0 5px 30px rgba(0, 0, 0, 0.15);
     }
+    
     .name {
-        font-size: 2.5rem;
+        font-size: 2rem;
+        line-height: 1.2;
     }
-    .skills-list {
-        grid-template-columns: 1fr;
+    
+    .tagline {
+        font-size: 1rem;
     }
+    
+    .university {
+        font-size: 0.95rem;
+    }
+    
+    .profile-image {
+        width: 120px;
+        height: 120px;
+        margin-bottom: 20px;
+    }
+    
+    .section-heading {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+    }
+    
+    .content {
+        font-size: 1rem;
+        line-height: 1.7;
+    }
+    
     .stats-bar {
         flex-direction: column;
         gap: 15px;
+        padding: 20px;
     }
+    
+    .stat {
+        width: 100%;
+        padding: 15px;
+    }
+    
+    .stat-number {
+        font-size: 1.5rem;
+    }
+    
+    .skills-list {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .skill-item {
+        padding: 15px;
+    }
+    
     .achievements {
         grid-template-columns: 1fr;
+        gap: 20px;
     }
+    
+    .achievement-card {
+        padding: 20px;
+    }
+    
     .contact-methods {
         grid-template-columns: 1fr;
+        gap: 20px;
     }
+    
+    .contact-method {
+        padding: 20px;
+    }
+    
     .info-cards {
         grid-template-columns: 1fr;
+        gap: 15px;
     }
+    
     .cta-buttons {
         flex-direction: column;
+        gap: 15px;
     }
+    
+    .cta-button,
+    .secondary-btn {
+        width: 100%;
+        padding: 15px 30px;
+        font-size: 1rem;
+    }
+    
     .newsletter-form {
         flex-direction: column;
+        gap: 10px;
     }
+    
+    .newsletter-input {
+        width: 100%;
+        padding: 15px;
+    }
+    
+    .newsletter-btn {
+        width: 100%;
+        padding: 15px;
+    }
+    
     .projects-grid {
         grid-template-columns: 1fr;
+        gap: 20px;
     }
+    
+    .project-card {
+        padding: 20px;
+    }
+    
     .badge-container {
-        gap: 10px;
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+    
+    .badge {
+        padding: 6px 12px;
+        font-size: 0.85rem;
+    }
+    
+    .social-links {
+        gap: 15px;
+    }
+    
+    .social-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+    
+    .quote-box {
+        padding: 20px;
+        font-size: 1rem;
+    }
+    
+    .ornament {
+        font-size: 1.5rem;
+        margin: 30px 0;
+    }
+    
+    /* Improve touch targets */
+    button,
+    a,
+    .nav-dot,
+    .dark-mode-toggle,
+    .scroll-top {
+        min-width: 44px;
+        min-height: 44px;
+    }
+    
+    /* Hide floating nav on mobile for cleaner look */
+    .floating-nav {
+        display: none;
+    }
+    
+    /* Disable heavy animations on mobile for better performance */
+    .spotlight {
+        display: none;
+    }
+    
+    .floating-shapes {
+        display: none;
+    }
+    
+    /* Optimize scroll performance */
+    * {
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    /* Better tap highlights */
+    * {
+        -webkit-tap-highlight-color: rgba(139, 115, 85, 0.2);
+    }
+}
+
+/* Extra small phones */
+@media (max-width: 480px) {
+    .page {
+        margin: 5px;
+        padding: 25px 15px;
+    }
+    
+    .name {
+        font-size: 1.75rem;
+    }
+    
+    .section-heading {
+        font-size: 1.5rem;
+    }
+    
+    .profile-image {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .stat-number {
+        font-size: 1.3rem;
+    }
+    
+    .content {
+        font-size: 0.95rem;
+    }
+}
+
+/* Landscape mobile orientation */
+@media (max-width: 768px) and (orientation: landscape) {
+    .page {
+        padding: 20px 15px;
+    }
+    
+    .profile-image {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .name {
+        font-size: 1.5rem;
     }
 }
