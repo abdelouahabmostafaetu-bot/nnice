@@ -267,7 +267,7 @@ document.addEventListener('click', (e) => {
 
 // Welcome message
 setTimeout(() => {
-    showToast('👋 Welcome to my portfolio!');
+    showToast('✨ Welcome to an extraordinary journey through excellence! 🌟');
 }, 1000);
 
 // Keyboard shortcuts
