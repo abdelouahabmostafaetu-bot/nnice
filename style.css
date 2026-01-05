@@ -303,6 +303,29 @@ header {
     left: 10px;
 }
 
+/* Daily Mathematics Quote Styles */
+.daily-quote {
+    position: relative;
+    z-index: 1;
+}
+
+.quote-text {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin: 0;
+    color: #2c2416;
+}
+
+.quote-date {
+    margin-top: 15px;
+    margin-bottom: 0;
+    font-size: 0.85rem;
+    color: #888;
+    font-style: normal;
+    text-align: right;
+    opacity: 0.8;
+}
+
 .education-item {
     background: #faf8f3;
     padding: 30px;
@@ -1448,6 +1471,16 @@ footer {
         font-size: 0.95rem;
         line-height: 1.7;
         text-align: left;
+    }
+    
+    .quote-text {
+        font-size: 0.95rem;
+        line-height: 1.7;
+    }
+    
+    .quote-date {
+        font-size: 0.8rem;
+        margin-top: 12px;
     }
     
     .quote-box::before {
