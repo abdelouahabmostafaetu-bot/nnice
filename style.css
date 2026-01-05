@@ -1443,8 +1443,28 @@ footer {
     }
     
     .quote-box {
-        padding: 20px;
+        padding: 20px 15px;
+        margin: 25px 0;
+        font-size: 0.95rem;
+        line-height: 1.7;
+        text-align: left;
+    }
+    
+    .quote-box::before {
+        font-size: 3rem;
+        top: -5px;
+        left: 5px;
+    }
+    
+    .section {
+        margin-bottom: 30px;
+    }
+    
+    .section .content {
         font-size: 1rem;
+        line-height: 1.8;
+        text-align: left;
+        margin-bottom: 20px;
     }
     
     .ornament {
