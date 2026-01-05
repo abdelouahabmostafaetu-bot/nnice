@@ -36,28 +36,6 @@ document.getElementById('scrollTop').addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
-// Dark mode toggle
-const darkModeToggle = document.getElementById('darkModeToggle');
-const body = document.body;
-
-// Check saved preference
-if (localStorage.getItem('darkMode') === 'enabled') {
-    body.classList.add('dark-mode');
-    darkModeToggle.textContent = '☀️';
-}
-
-darkModeToggle.addEventListener('click', () => {
-    body.classList.toggle('dark-mode');
-    
-    if (body.classList.contains('dark-mode')) {
-        darkModeToggle.textContent = '☀️';
-        localStorage.setItem('darkMode', 'enabled');
-    } else {
-        darkModeToggle.textContent = '🌙';
-        localStorage.setItem('darkMode', 'disabled');
-    }
-});
-
 // Spotlight effect (mouse follower)
 const spotlight = document.getElementById('spotlight');
 document.addEventListener('mousemove', (e) => {
