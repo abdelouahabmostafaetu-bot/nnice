@@ -46,10 +46,9 @@
 
 body {
     font-family: 'Georgia', serif;
-    background: linear-gradient(135deg, #f5f1e8 0%, #e8dcc8 100%);
+    background: #ffffff;
     color: #2c2416;
     line-height: 1.6;
-    animation: backgroundShift 15s ease infinite;
     transition: all 0.3s;
 }
 
