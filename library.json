@@ -1,46 +1,14 @@
-[
+
     {
         "id": 1,
         "title": "Sharpening Mathematical Analysis Skills",
-        "author": "Unknown",
+        "author": "Alina Sîntămărian & Ovidiu Furdui",
         "category": "Mathematics",
         "year": "2024",
         "pages": 0,
         "description": "A comprehensive guide to sharpening your mathematical analysis skills.",
-        "cover": "cover/Sharpening Mathematical Analysis Skills.webp",
+        "cover": "cover/Sharpening Mathematical Analysis Skills.jpg",
         "driveLink": "https://drive.usercontent.google.com/download?id=1cT_TfUb-FE4PX37GBYMVqg-8I2AnhUyF&export=download&authuser=2&confirm=t&uuid=9c04254c-34fa-489c-b39f-eef38f886187&at=ANTm3cx8vMrnXtjPzfipUAMRgytC:1767796326672"
-    },
-    {
-        "id": 2,
-        "title": "Introduction to Linear Algebra",
-        "author": "Gilbert Strang",
-        "category": "Mathematics",
-        "year": "2016",
-        "pages": 574,
-        "description": "A comprehensive introduction to linear algebra concepts and applications.",
-        "cover": "https://via.placeholder.com/200x280/8b7355/ffffff?text=Linear+Algebra",
-        "driveLink": "https://drive.google.com/file/d/YOUR_FILE_ID/view?usp=sharing"
-    },
-    {
-        "id": 3,
-        "title": "Calculus",
-        "author": "James Stewart",
-        "category": "Mathematics",
-        "year": "2015",
-        "pages": 1368,
-        "description": "Classic textbook covering single and multivariable calculus.",
-        "cover": "https://via.placeholder.com/200x280/8b7355/ffffff?text=Calculus",
-        "driveLink": "https://drive.google.com/file/d/YOUR_FILE_ID/view?usp=sharing"
-    },
-    {
-        "id": 4,
-        "title": "Real Analysis",
-        "author": "Walter Rudin",
-        "category": "Mathematics",
-        "year": "1976",
-        "pages": 342,
-        "description": "Foundation of mathematical analysis and rigorous proofs.",
-        "cover": "https://via.placeholder.com/200x280/8b7355/ffffff?text=Real+Analysis",
-        "driveLink": "https://drive.google.com/file/d/YOUR_FILE_ID/view?usp=sharing"
     }
-]
+    
+    
