@@ -15,11 +15,15 @@
     <div class="scroll-top" id="scrollTop">↑</div>
     <div class="spotlight" id="spotlight"></div>
     
+    <!-- Admin Panel Link -->
+    <a href="admin.html" class="admin-login-btn main-page-admin">🔐 Admin</a>
+    
     <div class="floating-nav" id="floatingNav">
         <div class="nav-dot" data-tooltip="Home" data-section="0"></div>
         <div class="nav-dot" data-tooltip="About" data-section="1"></div>
         <div class="nav-dot" data-tooltip="Education" data-section="2"></div>
         <div class="nav-dot" data-tooltip="Library" data-section="3"></div>
+        <div class="nav-dot" data-tooltip="Topics" data-section="topics" data-link="topics.html"></div>
         <div class="nav-dot" data-tooltip="Contact" data-section="4"></div>
     </div>
     
@@ -87,7 +91,8 @@
             </div>
 
             <div class="books-grid" id="booksGrid">
-                <div class="book-card" data-category="Mathematics">
+                <div class="book-card featured-book" data-category="Mathematics">
+                    <div class="featured-book-badge">⭐ Recommended</div>
                     <div class="book-cover">
                         <img src="cover/Sharpening Mathematical Analysis Skills.jpg" alt="Sharpening Mathematical Analysis Skills">
                         <div class="book-overlay">
@@ -106,6 +111,40 @@
                         <p class="book-description">A comprehensive guide to sharpening your mathematical analysis skills.</p>
                     </div>
                 </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="library-page.html" class="topics-link">📚 Browse Full Library →</a>
+            </div>
+        </section>
+
+        <div class="ornament">❦</div>
+
+        <section class="section topics-preview-section">
+            <h2 class="section-heading">Topics & Articles</h2>
+            <p class="content" style="text-align: center; margin-bottom: 20px;">
+                Explore my thoughts, research insights, and articles on various topics
+            </p>
+            
+            <!-- Featured Article -->
+            <div class="featured-article-container" id="featuredArticleContainer">
+                <div class="featured-article" id="featuredArticle">
+                    <div class="featured-badge">⭐ Featured Article</div>
+                    <h3 class="featured-article-title" id="featuredArticleTitle">Loading...</h3>
+                    <p class="featured-article-excerpt" id="featuredArticleExcerpt"></p>
+                    <div class="featured-article-meta">
+                        <span class="featured-article-category" id="featuredArticleCategory"></span>
+                        <span class="featured-article-date" id="featuredArticleDate"></span>
+                    </div>
+                    <button class="read-more-btn" id="readFeaturedBtn" onclick="viewFeaturedArticle()">Read Article →</button>
+                </div>
+            </div>
+            <p class="no-featured-message" id="noFeaturedMessage" style="display: none; text-align: center; color: #666; margin: 20px 0;">
+                No articles yet. Check back soon!
+            </p>
+            
+            <div style="text-align: center; margin-top: 25px;">
+                <a href="topics.html" class="topics-link">✨ Browse All Topics →</a>
             </div>
         </section>
 

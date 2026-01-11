@@ -228,8 +228,17 @@ window.addEventListener('scroll', () => {
 
 navDots.forEach((dot) => {
     dot.addEventListener('click', () => {
+        // Check if this is a link to another page
+        const link = dot.getAttribute('data-link');
+        if (link) {
+            window.location.href = link;
+            return;
+        }
+        
         const sectionIndex = parseInt(dot.getAttribute('data-section'));
-        sections[sectionIndex].scrollIntoView({ behavior: 'smooth' });
+        if (!isNaN(sectionIndex) && sections[sectionIndex]) {
+            sections[sectionIndex].scrollIntoView({ behavior: 'smooth' });
+        }
     });
 });
 
@@ -277,3 +286,51 @@ document.addEventListener('keydown', (e) => {
         window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
     }
 });
+
+// ==========================================
+// FEATURED CONTENT LOADER
+// ==========================================
+
+let featuredArticleData = null;
+
+// Load featured article on page load
+document.addEventListener('DOMContentLoaded', function() {
+    loadFeaturedArticle();
+});
+
+function loadFeaturedArticle() {
+    const container = document.getElementById('featuredArticleContainer');
+    const noMessage = document.getElementById('noFeaturedMessage');
+    
+    if (!container) return;
+    
+    // Get articles from localStorage
+    const articles = JSON.parse(localStorage.getItem('userArticles') || '[]');
+    
+    if (articles.length === 0) {
+        container.style.display = 'none';
+        if (noMessage) noMessage.style.display = 'block';
+        return;
+    }
+    
+    // Get the most recent article as featured
+    featuredArticleData = articles[0];
+    
+    // Update UI
+    document.getElementById('featuredArticleTitle').textContent = featuredArticleData.title;
+    document.getElementById('featuredArticleExcerpt').textContent = 
+        featuredArticleData.content.substring(0, 200).replace(/<[^>]*>/g, '') + '...';
+    document.getElementById('featuredArticleCategory').textContent = featuredArticleData.category;
+    document.getElementById('featuredArticleDate').textContent = featuredArticleData.date;
+    
+    container.style.display = 'block';
+    if (noMessage) noMessage.style.display = 'none';
+}
+
+function viewFeaturedArticle() {
+    if (featuredArticleData) {
+        // Store article data and redirect to topics page
+        sessionStorage.setItem('viewArticle', JSON.stringify(featuredArticleData));
+        window.location.href = 'topics.html';
+    }
+}

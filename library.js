@@ -2,15 +2,27 @@
 let allBooks = [];
 let currentFilter = 'all';
 
-// Load books from JSON
+// Load books from JSON and localStorage
 async function loadBooks() {
     try {
         const response = await fetch('library.json');
-        allBooks = await response.json();
+        const jsonBooks = await response.json();
+        
+        // Also load custom books from localStorage
+        const customBooks = JSON.parse(localStorage.getItem('customBooks') || '[]');
+        
+        // Combine both sources
+        allBooks = [...customBooks, ...jsonBooks];
+        
         displayBooks(allBooks);
         updateStats();
     } catch (error) {
         console.error('Error loading books:', error);
+        // Try to load only custom books if JSON fails
+        const customBooks = JSON.parse(localStorage.getItem('customBooks') || '[]');
+        allBooks = customBooks;
+        displayBooks(allBooks);
+        updateStats();
     }
 }
 

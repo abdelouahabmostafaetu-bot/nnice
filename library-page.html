@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="theme-color" content="#8b7355">
+    <title>Library - Abdelouahab Mostafa</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="scroll-progress" id="scrollProgress"></div>
+    <div class="scroll-top" id="scrollTop">↑</div>
+    <div class="spotlight" id="spotlight"></div>
+    
+    <div class="page">
+        <header style="padding: 40px 20px;">
+            <a href="index.html" class="back-link">← Back to Home</a>
+            <h1 class="name" style="font-size: 2.5rem; margin-top: 20px;">📚 My Library</h1>
+            <p class="tagline">A curated collection of academic resources and books</p>
+        </header>
+
+        <main class="topics-main">
+            <!-- Library Stats -->
+            <div class="library-page-stats">
+                <div class="stat-box">
+                    <span class="stat-number" id="totalBooks">0</span>
+                    <span class="stat-label">Total Books</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-number" id="totalCategories">0</span>
+                    <span class="stat-label">Categories</span>
+                </div>
+            </div>
+
+            <!-- Category Filter -->
+            <div class="category-filter">
+                <button class="filter-btn active" data-category="all">All</button>
+            </div>
+
+            <!-- Books Grid -->
+            <div class="library-grid" id="libraryGrid">
+                <!-- Books will be loaded here -->
+            </div>
+
+            <!-- No Books Message -->
+            <div class="no-books-message" id="noBooksMessage" style="display: none;">
+                <p>📚 No books available yet.</p>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Abdelouahab Mostafa. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- Book Details Modal -->
+    <div class="book-modal" id="bookModal">
+        <div class="book-modal-content">
+            <button class="modal-close" onclick="closeBookModal()">&times;</button>
+            <div class="book-modal-body">
+                <div class="book-modal-cover">
+                    <img id="modalBookCover" src="" alt="Book Cover">
+                </div>
+                <div class="book-modal-info">
+                    <h2 id="modalBookTitle"></h2>
+                    <p class="book-author" id="modalBookAuthor"></p>
+                    <div class="book-meta">
+                        <span class="book-category" id="modalBookCategory"></span>
+                        <span class="book-year" id="modalBookYear"></span>
+                        <span class="book-pages" id="modalBookPages"></span>
+                    </div>
+                    <p class="book-description" id="modalBookDescription"></p>
+                    <a id="modalDownloadBtn" href="#" target="_blank" class="download-btn-large">
+                        📥 Download Book
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="library-page.js"></script>
+</body>
+</html>

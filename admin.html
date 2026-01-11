@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="theme-color" content="#8b7355">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Admin Panel - Abdelouahab Mostafa</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- MathJax Configuration -->
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+</head>
+<body>
+    <div class="scroll-progress" id="scrollProgress"></div>
+    <div class="scroll-top" id="scrollTop">↑</div>
+    <div class="spotlight" id="spotlight"></div>
+    
+    <nav class="top-nav">
+        <a href="index.html" class="nav-link">← Back to Home</a>
+        <button class="admin-login-btn" id="adminLoginBtn">🔐 Login</button>
+    </nav>
+
+    <!-- Login Modal -->
+    <div class="login-modal" id="loginModal">
+        <div class="login-content">
+            <button class="modal-close" onclick="closeLoginModal()">&times;</button>
+            <h2 class="login-title">Admin Login</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" placeholder="Enter username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter password" required>
+                </div>
+                <p class="login-error" id="loginError"></p>
+                <button type="submit" class="btn-primary" style="width: 100%;">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="page">
+        <header class="topics-header">
+            <h1 class="page-title">Admin Panel</h1>
+            <p class="page-subtitle">Manage your website content</p>
+        </header>
+
+        <div class="ornament">❦</div>
+
+        <!-- Login Required Message -->
+        <div class="login-required" id="loginRequired">
+            <div class="login-required-content">
+                <span class="lock-icon">🔒</span>
+                <h3>Admin Access Required</h3>
+                <p>Please login to access the admin panel</p>
+                <button class="btn-primary" onclick="openLoginModal()">Login</button>
+            </div>
+        </div>
+
+        <!-- Admin Panel (Hidden by default) -->
+        <section class="section admin-panel" id="adminPanel" style="display: none;">
+            
+            <!-- Admin Tabs -->
+            <div class="admin-tabs">
+                <button class="admin-tab active" data-tab="articles">📝 Articles</button>
+                <button class="admin-tab" data-tab="quotes">💬 Quotes</button>
+                <button class="admin-tab" data-tab="books">📚 Books</button>
+            </div>
+
+            <!-- Articles Tab -->
+            <div class="admin-tab-content active" id="tab-articles">
+                <h3 class="tab-title">Write New Article</h3>
+                <form class="article-form" id="articleForm">
+                    <div class="form-group">
+                        <label for="articleTitle">Title</label>
+                        <input type="text" id="articleTitle" name="title" placeholder="Enter article title..." required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="articleCategory">Category</label>
+                        <select id="articleCategory" name="category" required>
+                            <option value="">Select a category</option>
+                            <option value="mathematics">Mathematics</option>
+                            <option value="research">Research</option>
+                            <option value="thoughts">Thoughts</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="articleContent">Content</label>
+                        <div class="mathjax-help">
+                            <span class="help-title">📐 Math Equations (LaTeX):</span>
+                            <span class="help-example">Inline: <code>$x^2 + y^2 = z^2$</code></span>
+                            <span class="help-example">Block: <code>$$\int_0^\infty e^{-x^2} dx$$</code></span>
+                        </div>
+                        <div class="mathjax-help">
+                            <span class="help-title">💻 Code Blocks:</span>
+                            <span class="help-example">Inline: <code>`code here`</code></span>
+                            <span class="help-example">Block: <code>```code block```</code></span>
+                        </div>
+                        <textarea id="articleContent" name="content" rows="12" placeholder="Write your article here...
+
+Example with math:
+The quadratic formula is $x = \frac{-b \pm \sqrt{b^2-4ac}}{2a}$
+
+For display equations:
+$$\sum_{n=1}^{\infty} \frac{1}{n^2} = \frac{\pi^2}{6}$$
+
+For inline code: `\frac{a}{b}` renders a fraction
+
+For code blocks:
+```
+\begin{align}
+a &= b + c \\
+d &= e + f
+\end{align}
+```" required></textarea>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn-secondary" onclick="clearArticleForm()">Clear</button>
+                        <button type="submit" class="btn-primary">Publish Article</button>
+                    </div>
+                </form>
+
+                <div class="existing-items">
+                    <h4 style="margin-top: 30px; color: #8b7355;">Published Articles</h4>
+                    <div id="articlesContainer"></div>
+                </div>
+            </div>
+
+            <!-- Quotes Tab -->
+            <div class="admin-tab-content" id="tab-quotes">
+                <h3 class="tab-title">Add New Quote</h3>
+                <form class="article-form" id="quoteForm">
+                    <div class="form-group">
+                        <label for="quoteText">Quote Text</label>
+                        <textarea id="quoteText" name="quote" rows="4" placeholder="Enter the quote..." required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="quoteAuthor">Author</label>
+                        <input type="text" id="quoteAuthor" name="author" placeholder="Enter author name..." required>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn-secondary" onclick="clearQuoteForm()">Clear</button>
+                        <button type="submit" class="btn-primary">Add Quote</button>
+                    </div>
+                </form>
+                
+                <div class="existing-items">
+                    <h4 style="margin-top: 30px; color: #8b7355;">Existing Quotes</h4>
+                    <div id="quotesContainer"></div>
+                </div>
+            </div>
+
+            <!-- Books Tab -->
+            <div class="admin-tab-content" id="tab-books">
+                <h3 class="tab-title">Add New Book</h3>
+                <form class="article-form" id="bookForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="bookTitle">Book Title</label>
+                            <input type="text" id="bookTitle" name="title" placeholder="Enter book title..." required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="bookAuthor">Author</label>
+                            <input type="text" id="bookAuthor" name="author" placeholder="Enter author name..." required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="bookCategory">Category</label>
+                            <select id="bookCategory" name="category" required>
+                                <option value="">Select a category</option>
+                                <option value="Mathematics">Mathematics</option>
+                                <option value="Physics">Physics</option>
+                                <option value="Computer Science">Computer Science</option>
+                                <option value="Philosophy">Philosophy</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="bookYear">Year</label>
+                            <input type="text" id="bookYear" name="year" placeholder="2024" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="bookDescription">Description</label>
+                        <textarea id="bookDescription" name="description" rows="3" placeholder="Brief description of the book..." required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="bookCover">Cover Image URL</label>
+                        <input type="text" id="bookCover" name="cover" placeholder="cover/book-name.jpg">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="bookDownload">Download Link (Google Drive)</label>
+                        <input type="url" id="bookDownload" name="download" placeholder="https://drive.google.com/..." required>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn-secondary" onclick="clearBookForm()">Clear</button>
+                        <button type="submit" class="btn-primary">Add Book</button>
+                    </div>
+                </form>
+                
+                <div class="existing-items">
+                    <h4 style="margin-top: 30px; color: #8b7355;">Library Books</h4>
+                    <div id="booksContainer"></div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>© 2026 Abdelouahab Mostafa. All rights reserved.</p>
+            <p style="margin-top: 10px; font-size: 0.85rem;">Admin Panel</p>
+        </footer>
+    </div>
+
+    <div class="floating-shapes">
+        <div class="floating-shape"></div>
+        <div class="floating-shape"></div>
+        <div class="floating-shape"></div>
+    </div>
+
+    <script src="admin.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

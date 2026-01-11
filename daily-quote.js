@@ -43,7 +43,7 @@ class DailyQuoteSystem {
     }
 
     /**
-     * Load quotes from JSON file
+     * Load quotes from JSON file and localStorage
      */
     async loadQuotes() {
         try {
@@ -53,11 +53,24 @@ class DailyQuoteSystem {
             }
             const data = await response.json();
             this.quotes = data.quotes;
+            
+            // Also load custom quotes from localStorage and merge them
+            const customQuotes = JSON.parse(localStorage.getItem('customQuotes') || '[]');
+            if (customQuotes.length > 0) {
+                const customQuoteStrings = customQuotes.map(q => `${q.text} — ${q.author}`);
+                this.quotes = [...customQuoteStrings, ...this.quotes];
+            }
+            
             return true;
         } catch (error) {
             console.error('Error loading quotes:', error);
-            // Fallback quote if loading fails
-            this.quotes = ["Mathematics is the language in which God has written the universe. — Galileo Galilei"];
+            // Try custom quotes first, then fallback
+            const customQuotes = JSON.parse(localStorage.getItem('customQuotes') || '[]');
+            if (customQuotes.length > 0) {
+                this.quotes = customQuotes.map(q => `${q.text} — ${q.author}`);
+            } else {
+                this.quotes = ["Mathematics is the language in which God has written the universe. — Galileo Galilei"];
+            }
             return false;
         }
     }
