@@ -79,14 +79,13 @@
             
             <!-- Admin Tabs -->
             <div class="admin-tabs">
-                <button class="admin-tab active" data-tab="articles">📝 Articles</button>
-                <button class="admin-tab" data-tab="quotes">💬 Quotes</button>
-                <button class="admin-tab" data-tab="books">📚 Books</button>
+                <button class="admin-tab active" data-tab="articles">Articles</button>
+                <button class="admin-tab" data-tab="quotes">Quotes</button>
+                <button class="admin-tab" data-tab="books">Books</button>
             </div>
 
             <!-- Articles Tab -->
             <div class="admin-tab-content active" id="tab-articles">
-                <h3 class="tab-title">✏️ New Article</h3>
                 <form class="article-form" id="articleForm">
                     <div class="form-row">
                         <div class="form-group">
@@ -107,7 +106,7 @@
                     <div class="form-group">
                         <label for="articleContent">Content</label>
                         <div class="mathjax-help">
-                            <span class="help-title">📐 LaTeX:</span>
+                            <span class="help-title">LaTeX:</span>
                             <span class="help-example"><code>$x^2$</code> inline</span>
                             <span class="help-example"><code>$$\sum$$</code> block</span>
                         </div>
@@ -116,19 +115,18 @@
                     
                     <div class="form-actions">
                         <button type="button" class="btn-secondary" onclick="clearArticleForm()">Clear</button>
-                        <button type="submit" class="btn-primary">📤 Publish</button>
+                        <button type="submit" class="btn-primary">Publish</button>
                     </div>
                 </form>
 
                 <div class="existing-items">
-                    <h4>📋 Published Articles</h4>
+                    <h4>Published</h4>
                     <div id="articlesContainer"></div>
                 </div>
             </div>
 
             <!-- Quotes Tab -->
             <div class="admin-tab-content" id="tab-quotes">
-                <h3 class="tab-title">💬 New Quote</h3>
                 <form class="article-form" id="quoteForm">
                     <div class="form-group">
                         <label for="quoteText">Quote</label>
@@ -142,19 +140,18 @@
                     
                     <div class="form-actions">
                         <button type="button" class="btn-secondary" onclick="clearQuoteForm()">Clear</button>
-                        <button type="submit" class="btn-primary">➕ Add</button>
+                        <button type="submit" class="btn-primary">Add Quote</button>
                     </div>
                 </form>
                 
                 <div class="existing-items">
-                    <h4>📜 Saved Quotes</h4>
+                    <h4>Saved</h4>
                     <div id="quotesContainer"></div>
                 </div>
             </div>
 
             <!-- Books Tab -->
             <div class="admin-tab-content" id="tab-books">
-                <h3 class="tab-title">📚 New Book</h3>
                 <form class="article-form" id="bookForm">
                     <div class="form-row">
                         <div class="form-group">
@@ -203,12 +200,12 @@
                     
                     <div class="form-actions">
                         <button type="button" class="btn-secondary" onclick="clearBookForm()">Clear</button>
-                        <button type="submit" class="btn-primary">➕ Add</button>
+                        <button type="submit" class="btn-primary">Add Book</button>
                     </div>
                 </form>
                 
                 <div class="existing-items">
-                    <h4>📖 Library Books</h4>
+                    <h4>Library</h4>
                     <div id="booksContainer"></div>
                 </div>
             </div>

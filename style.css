@@ -2491,96 +2491,113 @@ footer {
 }
 
 /* ==========================================
-   ADMIN PANEL STYLES - Mobile Professional
+   ADMIN PANEL STYLES - Clean Mobile Design
    ========================================== */
 
 .admin-panel {
-    background: #faf8f3;
-    padding: 20px;
-    border-radius: 12px;
-    max-width: 100%;
+    background: white;
+    padding: 0;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    overflow: hidden;
 }
 
-/* Admin Tabs - Compact for mobile */
+/* Admin Tabs - Bottom navigation style */
 .admin-tabs {
     display: flex;
-    gap: 6px;
-    margin-bottom: 20px;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    padding-bottom: 5px;
-    -webkit-overflow-scrolling: touch;
+    background: #f8f6f2;
+    border-bottom: 1px solid #e8e4dc;
+    padding: 0;
+    margin: 0;
 }
 
 .admin-tab {
-    padding: 8px 14px;
-    background: white;
-    border: 1.5px solid #d4c4a8;
-    color: #666;
-    font-size: 0.8rem;
+    flex: 1;
+    padding: 16px 8px;
+    background: transparent;
+    border: none;
+    border-bottom: 3px solid transparent;
+    color: #999;
+    font-size: 0.75rem;
     cursor: pointer;
-    border-radius: 20px;
-    transition: all 0.3s;
     font-family: Georgia, serif;
-    white-space: nowrap;
-    flex-shrink: 0;
+    text-align: center;
+    transition: all 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
 }
 
+.admin-tab::before {
+    font-size: 1.2rem;
+}
+
+.admin-tab[data-tab="articles"]::before { content: "📝"; }
+.admin-tab[data-tab="quotes"]::before { content: "💬"; }
+.admin-tab[data-tab="books"]::before { content: "📚"; }
+
 .admin-tab:hover {
-    border-color: #8b7355;
     color: #8b7355;
+    background: rgba(139, 115, 85, 0.05);
 }
 
 .admin-tab.active {
-    background: linear-gradient(135deg, #8b7355, #b8936c);
-    border-color: #8b7355;
-    color: white;
+    color: #8b7355;
+    border-bottom-color: #8b7355;
+    background: white;
+    font-weight: 600;
 }
 
 /* Tab Content */
 .admin-tab-content {
     display: none;
+    padding: 20px;
 }
 
 .admin-tab-content.active {
     display: block;
-    animation: fadeIn 0.3s ease-out;
+    animation: fadeIn 0.2s ease-out;
 }
 
 .tab-title {
-    font-size: 1rem;
-    color: #8b7355;
-    margin-bottom: 15px;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    display: none;
 }
 
-/* Form Styling - Compact */
+/* Form Styling - Clean cards */
+.article-form {
+    background: #faf8f5;
+    padding: 16px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
 .article-form .form-group {
-    margin-bottom: 12px;
+    margin-bottom: 16px;
 }
 
 .article-form label {
-    font-size: 0.8rem;
-    color: #555;
-    margin-bottom: 4px;
+    font-size: 0.7rem;
+    color: #8b7355;
+    margin-bottom: 6px;
     display: block;
-    font-weight: 500;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .article-form input,
 .article-form select,
 .article-form textarea {
-    padding: 10px 12px;
-    font-size: 0.85rem;
-    border-radius: 8px;
-    border: 1.5px solid #ddd;
+    padding: 14px 16px;
+    font-size: 16px; /* Prevents zoom on iOS */
+    border-radius: 10px;
+    border: 2px solid #e8e4dc;
     width: 100%;
     box-sizing: border-box;
-    transition: border-color 0.2s, box-shadow 0.2s;
+    transition: all 0.2s;
     font-family: Georgia, serif;
+    background: white;
 }
 
 .article-form input:focus,
@@ -2588,148 +2605,214 @@ footer {
 .article-form textarea:focus {
     outline: none;
     border-color: #8b7355;
-    box-shadow: 0 0 0 3px rgba(139, 115, 85, 0.1);
+    background: white;
+}
+
+.article-form input::placeholder,
+.article-form textarea::placeholder {
+    color: #bbb;
 }
 
 .article-form textarea {
-    min-height: 120px;
+    min-height: 140px;
     resize: vertical;
+    line-height: 1.6;
 }
 
-/* Form Actions - Compact buttons */
+/* Form Actions */
 .form-actions {
     display: flex;
-    gap: 10px;
-    margin-top: 15px;
-}
-
-.form-actions .btn-primary,
-.form-actions .btn-secondary {
-    padding: 10px 20px;
-    font-size: 0.8rem;
-    border-radius: 20px;
-    flex: 1;
-}
-
-/* Form Row */
-.form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
     gap: 12px;
+    margin-top: 20px;
 }
 
-/* MathJax Help - Compact */
+.form-actions .btn-primary {
+    flex: 2;
+    padding: 14px 20px;
+    font-size: 0.9rem;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #8b7355, #a08060);
+    border: none;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.form-actions .btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(139, 115, 85, 0.3);
+}
+
+.form-actions .btn-secondary {
+    flex: 1;
+    padding: 14px 16px;
+    font-size: 0.85rem;
+    border-radius: 10px;
+    background: #f0ebe3;
+    border: none;
+    color: #666;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.form-actions .btn-secondary:hover {
+    background: #e5dfd5;
+}
+
+/* Form Row - Always stack on mobile */
+.form-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+/* MathJax Help - Minimal */
 .mathjax-help {
-    padding: 8px 12px;
-    margin-bottom: 8px;
-    font-size: 0.75rem;
+    background: #f0ebe3;
+    padding: 10px 14px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    display: flex;
+    flex-wrap: wrap;
     gap: 8px;
+    align-items: center;
 }
 
 .mathjax-help .help-title {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: #8b7355;
 }
 
 .mathjax-help .help-example {
     font-size: 0.7rem;
+    color: #666;
 }
 
 .mathjax-help code {
-    font-size: 0.7rem;
-    padding: 2px 5px;
+    background: white;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.65rem;
+    font-family: monospace;
 }
 
-/* Quote Items - Compact */
-.quote-item {
-    background: white;
-    padding: 12px 15px;
-    border-radius: 8px;
+/* Existing Items Header */
+.existing-items h4 {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #999;
+    margin-bottom: 12px;
+    padding-bottom: 0;
+    border: none;
+}
+
+/* Item Cards - Unified style */
+.quote-item,
+.book-item,
+.admin-article-item,
+.admin-item {
+    background: #faf8f5;
+    padding: 14px 16px;
+    border-radius: 10px;
     margin-bottom: 10px;
-    border-left: 3px solid #8b7355;
     position: relative;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    border: none;
+    border-left: none;
+    box-shadow: none;
+}
+
+.quote-item {
+    padding-right: 50px;
 }
 
 .quote-text-item {
     font-style: italic;
     color: #444;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
     line-height: 1.5;
-    font-size: 0.85rem;
-    padding-right: 30px;
+    font-size: 0.9rem;
 }
 
 .quote-author-item {
     color: #8b7355;
     font-size: 0.75rem;
+    font-weight: 600;
 }
 
 .quote-delete {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
 }
 
+/* Delete button - Icon only */
 .delete-btn {
-    padding: 5px 10px;
-    font-size: 0.7rem;
-    background: #ff6b6b;
-    color: white;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    font-size: 0.9rem;
+    background: #fee;
+    color: #e55;
     border: none;
-    border-radius: 12px;
+    border-radius: 8px;
     cursor: pointer;
     transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .delete-btn:hover {
-    background: #ee5a5a;
-    transform: scale(1.05);
+    background: #fdd;
 }
 
-/* Book Items - Compact */
+/* Book Items */
 .book-item {
-    background: white;
-    padding: 12px 15px;
-    border-radius: 8px;
-    margin-bottom: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-left: 3px solid #8b7355;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    gap: 10px;
+    gap: 12px;
+}
+
+.book-item-info {
+    flex: 1;
+    min-width: 0;
 }
 
 .book-item-info h4 {
     color: #2c2416;
     font-size: 0.9rem;
-    margin-bottom: 3px;
+    margin-bottom: 2px;
     font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .book-item-info p {
-    color: #666;
+    color: #888;
     font-size: 0.75rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-/* Article Items in Admin */
+/* Article Items */
 .admin-article-item {
-    background: white;
-    padding: 12px 15px;
-    border-radius: 8px;
-    margin-bottom: 10px;
-    border-left: 3px solid #8b7355;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    gap: 10px;
+    align-items: center;
+    gap: 12px;
 }
 
 .admin-article-item h4 {
     font-size: 0.9rem;
     color: #2c2416;
-    margin-bottom: 4px;
+    margin-bottom: 2px;
     font-weight: 600;
 }
 
@@ -2738,87 +2821,68 @@ footer {
     color: #888;
 }
 
-/* Existing Items Section Header */
-.existing-items h4 {
-    font-size: 0.9rem;
-    margin-top: 20px;
-    margin-bottom: 12px;
-    padding-bottom: 8px;
-    border-bottom: 1px solid #e0d8c8;
+/* Empty state */
+.no-items-message {
+    text-align: center;
+    padding: 30px;
+    color: #999;
+    font-size: 0.85rem;
 }
 
-/* Responsive Admin Panel - Enhanced Mobile */
-@media (max-width: 768px) {
+/* Login Required - Better mobile */
+.login-required {
+    padding: 40px 20px;
+}
+
+.login-required-content {
+    text-align: center;
+}
+
+.login-required-content .lock-icon {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 16px;
+}
+
+.login-required-content h3 {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    color: #2c2416;
+}
+
+.login-required-content p {
+    color: #888;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+}
+
+/* Responsive - Tablet and up */
+@media (min-width: 768px) {
     .admin-panel {
-        padding: 15px;
-        border-radius: 10px;
-    }
-    
-    .admin-tabs {
-        gap: 5px;
-        margin-bottom: 15px;
+        max-width: 700px;
+        margin: 0 auto;
     }
     
     .admin-tab {
-        padding: 7px 12px;
-        font-size: 0.75rem;
+        padding: 18px 16px;
+        font-size: 0.85rem;
     }
     
-    .tab-title {
-        font-size: 0.9rem;
+    .admin-tab-content {
+        padding: 30px;
+    }
+    
+    .article-form {
+        padding: 24px;
     }
     
     .form-row {
-        grid-template-columns: 1fr;
-        gap: 0;
+        flex-direction: row;
+        gap: 16px;
     }
     
-    .form-actions {
-        flex-direction: column;
-    }
-    
-    .form-actions .btn-primary,
-    .form-actions .btn-secondary {
-        width: 100%;
-    }
-    
-    .book-item {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    
-    .mathjax-help {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 5px;
-    }
-    
-    .article-form textarea {
-        min-height: 100px;
-    }
-}
-
-@media (max-width: 480px) {
-    .admin-panel {
-        padding: 12px;
-    }
-    
-    .admin-tab {
-        padding: 6px 10px;
-        font-size: 0.7rem;
-    }
-    
-    .article-form input,
-    .article-form select,
-    .article-form textarea {
-        padding: 8px 10px;
-        font-size: 0.8rem;
-    }
-    
-    .form-actions .btn-primary,
-    .form-actions .btn-secondary {
-        padding: 10px 15px;
-        font-size: 0.75rem;
+    .form-row .form-group {
+        flex: 1;
     }
 }
 
