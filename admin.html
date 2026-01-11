@@ -86,105 +86,84 @@
 
             <!-- Articles Tab -->
             <div class="admin-tab-content active" id="tab-articles">
-                <h3 class="tab-title">Write New Article</h3>
+                <h3 class="tab-title">✏️ New Article</h3>
                 <form class="article-form" id="articleForm">
-                    <div class="form-group">
-                        <label for="articleTitle">Title</label>
-                        <input type="text" id="articleTitle" name="title" placeholder="Enter article title..." required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="articleCategory">Category</label>
-                        <select id="articleCategory" name="category" required>
-                            <option value="">Select a category</option>
-                            <option value="mathematics">Mathematics</option>
-                            <option value="research">Research</option>
-                            <option value="thoughts">Thoughts</option>
-                        </select>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="articleTitle">Title</label>
+                            <input type="text" id="articleTitle" name="title" placeholder="Article title..." required>
+                        </div>
+                        <div class="form-group">
+                            <label for="articleCategory">Category</label>
+                            <select id="articleCategory" name="category" required>
+                                <option value="">Select...</option>
+                                <option value="mathematics">Mathematics</option>
+                                <option value="research">Research</option>
+                                <option value="thoughts">Thoughts</option>
+                            </select>
+                        </div>
                     </div>
                     
                     <div class="form-group">
                         <label for="articleContent">Content</label>
                         <div class="mathjax-help">
-                            <span class="help-title">📐 Math Equations (LaTeX):</span>
-                            <span class="help-example">Inline: <code>$x^2 + y^2 = z^2$</code></span>
-                            <span class="help-example">Block: <code>$$\int_0^\infty e^{-x^2} dx$$</code></span>
+                            <span class="help-title">📐 LaTeX:</span>
+                            <span class="help-example"><code>$x^2$</code> inline</span>
+                            <span class="help-example"><code>$$\sum$$</code> block</span>
                         </div>
-                        <div class="mathjax-help">
-                            <span class="help-title">💻 Code Blocks:</span>
-                            <span class="help-example">Inline: <code>`code here`</code></span>
-                            <span class="help-example">Block: <code>```code block```</code></span>
-                        </div>
-                        <textarea id="articleContent" name="content" rows="12" placeholder="Write your article here...
-
-Example with math:
-The quadratic formula is $x = \frac{-b \pm \sqrt{b^2-4ac}}{2a}$
-
-For display equations:
-$$\sum_{n=1}^{\infty} \frac{1}{n^2} = \frac{\pi^2}{6}$$
-
-For inline code: `\frac{a}{b}` renders a fraction
-
-For code blocks:
-```
-\begin{align}
-a &= b + c \\
-d &= e + f
-\end{align}
-```" required></textarea>
+                        <textarea id="articleContent" name="content" rows="8" placeholder="Write your article... Use $math$ for equations" required></textarea>
                     </div>
                     
                     <div class="form-actions">
                         <button type="button" class="btn-secondary" onclick="clearArticleForm()">Clear</button>
-                        <button type="submit" class="btn-primary">Publish Article</button>
+                        <button type="submit" class="btn-primary">📤 Publish</button>
                     </div>
                 </form>
 
                 <div class="existing-items">
-                    <h4 style="margin-top: 30px; color: #8b7355;">Published Articles</h4>
+                    <h4>📋 Published Articles</h4>
                     <div id="articlesContainer"></div>
                 </div>
             </div>
 
             <!-- Quotes Tab -->
             <div class="admin-tab-content" id="tab-quotes">
-                <h3 class="tab-title">Add New Quote</h3>
+                <h3 class="tab-title">💬 New Quote</h3>
                 <form class="article-form" id="quoteForm">
                     <div class="form-group">
-                        <label for="quoteText">Quote Text</label>
-                        <textarea id="quoteText" name="quote" rows="4" placeholder="Enter the quote..." required></textarea>
+                        <label for="quoteText">Quote</label>
+                        <textarea id="quoteText" name="quote" rows="3" placeholder="Enter the quote..." required></textarea>
                     </div>
                     
                     <div class="form-group">
                         <label for="quoteAuthor">Author</label>
-                        <input type="text" id="quoteAuthor" name="author" placeholder="Enter author name..." required>
+                        <input type="text" id="quoteAuthor" name="author" placeholder="Author name..." required>
                     </div>
                     
                     <div class="form-actions">
                         <button type="button" class="btn-secondary" onclick="clearQuoteForm()">Clear</button>
-                        <button type="submit" class="btn-primary">Add Quote</button>
+                        <button type="submit" class="btn-primary">➕ Add</button>
                     </div>
                 </form>
                 
                 <div class="existing-items">
-                    <h4 style="margin-top: 30px; color: #8b7355;">Existing Quotes</h4>
+                    <h4>📜 Saved Quotes</h4>
                     <div id="quotesContainer"></div>
                 </div>
             </div>
 
             <!-- Books Tab -->
             <div class="admin-tab-content" id="tab-books">
-                <h3 class="tab-title">Add New Book</h3>
+                <h3 class="tab-title">📚 New Book</h3>
                 <form class="article-form" id="bookForm">
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="bookTitle">Book Title</label>
-                            <input type="text" id="bookTitle" name="title" placeholder="Enter book title..." required>
+                            <label for="bookTitle">Title</label>
+                            <input type="text" id="bookTitle" name="title" placeholder="Book title..." required>
                         </div>
-                        
                         <div class="form-group">
                             <label for="bookAuthor">Author</label>
-                            <input type="text" id="bookAuthor" name="author" placeholder="Enter author name..." required>
+                            <input type="text" id="bookAuthor" name="author" placeholder="Author..." required>
                         </div>
                     </div>
                     
@@ -192,15 +171,14 @@ d &= e + f
                         <div class="form-group">
                             <label for="bookCategory">Category</label>
                             <select id="bookCategory" name="category" required>
-                                <option value="">Select a category</option>
-                                <option value="Mathematics">Mathematics</option>
+                                <option value="">Select...</option>
+                                <option value="Mathematics">Math</option>
                                 <option value="Physics">Physics</option>
-                                <option value="Computer Science">Computer Science</option>
+                                <option value="Computer Science">CS</option>
                                 <option value="Philosophy">Philosophy</option>
                                 <option value="Other">Other</option>
                             </select>
                         </div>
-                        
                         <div class="form-group">
                             <label for="bookYear">Year</label>
                             <input type="text" id="bookYear" name="year" placeholder="2024" required>
@@ -209,35 +187,35 @@ d &= e + f
                     
                     <div class="form-group">
                         <label for="bookDescription">Description</label>
-                        <textarea id="bookDescription" name="description" rows="3" placeholder="Brief description of the book..." required></textarea>
+                        <textarea id="bookDescription" name="description" rows="2" placeholder="Brief description..." required></textarea>
                     </div>
                     
-                    <div class="form-group">
-                        <label for="bookCover">Cover Image URL</label>
-                        <input type="text" id="bookCover" name="cover" placeholder="cover/book-name.jpg">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="bookDownload">Download Link (Google Drive)</label>
-                        <input type="url" id="bookDownload" name="download" placeholder="https://drive.google.com/..." required>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="bookCover">Cover URL</label>
+                            <input type="text" id="bookCover" name="cover" placeholder="cover/name.jpg">
+                        </div>
+                        <div class="form-group">
+                            <label for="bookDownload">Download Link</label>
+                            <input type="url" id="bookDownload" name="download" placeholder="drive.google.com/..." required>
+                        </div>
                     </div>
                     
                     <div class="form-actions">
                         <button type="button" class="btn-secondary" onclick="clearBookForm()">Clear</button>
-                        <button type="submit" class="btn-primary">Add Book</button>
+                        <button type="submit" class="btn-primary">➕ Add</button>
                     </div>
                 </form>
                 
                 <div class="existing-items">
-                    <h4 style="margin-top: 30px; color: #8b7355;">Library Books</h4>
+                    <h4>📖 Library Books</h4>
                     <div id="booksContainer"></div>
                 </div>
             </div>
         </section>
 
         <footer>
-            <p>© 2026 Abdelouahab Mostafa. All rights reserved.</p>
-            <p style="margin-top: 10px; font-size: 0.85rem;">Admin Panel</p>
+            <p>© 2026 Abdelouahab Mostafa</p>
         </footer>
     </div>
 
