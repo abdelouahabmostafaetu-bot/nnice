@@ -1,5 +1,8 @@
 // Topics Page JavaScript - Display Articles Only
 
+// Global variable to store articles
+let allArticles = [];
+
 document.addEventListener('DOMContentLoaded', function() {
     loadArticles();
     checkForFeaturedArticle();
@@ -14,11 +17,42 @@ function checkForFeaturedArticle() {
     }
 }
 
-function loadArticles() {
+async function loadArticles() {
     const container = document.getElementById('articlesContainer');
     if (!container) return;
     
-    const articles = JSON.parse(localStorage.getItem('userArticles') || '[]');
+    // Show loading state
+    container.innerHTML = `
+        <div class="loading-articles">
+            <p>Loading articles...</p>
+        </div>
+    `;
+    
+    try {
+        // Load articles from JSON file (for all visitors)
+        const response = await fetch('articles.json?' + Date.now());
+        const data = await response.json();
+        allArticles = data.articles || [];
+        
+        // Also check localStorage for admin's unpublished articles (only visible to admin)
+        const localArticles = JSON.parse(localStorage.getItem('pendingArticles') || '[]');
+        
+        // Combine: JSON file articles are public, localStorage are pending
+        const combinedArticles = [...allArticles];
+        
+        displayArticles(combinedArticles);
+    } catch (error) {
+        console.error('Error loading articles:', error);
+        // Fallback to localStorage only
+        const localArticles = JSON.parse(localStorage.getItem('userArticles') || '[]');
+        allArticles = localArticles;
+        displayArticles(localArticles);
+    }
+}
+
+function displayArticles(articles) {
+    const container = document.getElementById('articlesContainer');
+    if (!container) return;
     
     if (articles.length === 0) {
         container.innerHTML = `
@@ -47,8 +81,8 @@ function loadArticles() {
 }
 
 function viewArticle(id) {
-    const articles = JSON.parse(localStorage.getItem('userArticles') || '[]');
-    const article = articles.find(a => a.id === id);
+    // Search in all articles (both from JSON and localStorage)
+    const article = allArticles.find(a => a.id === id);
     
     if (article) {
         // Store article and redirect to full reading page

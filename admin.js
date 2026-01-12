@@ -153,6 +153,9 @@ function initAdminTabs() {
 // ARTICLES MANAGEMENT
 // ==========================================
 
+// Global variable to store articles from JSON file
+let publishedArticles = [];
+
 function initArticleForm() {
     const form = document.getElementById('articleForm');
     if (form) {
@@ -165,15 +168,47 @@ function initArticleForm() {
     }
 }
 
-function loadArticles() {
+async function loadArticles() {
+    const container = document.getElementById('articlesContainer');
+    if (!container) return;
+    
+    try {
+        // Load articles from JSON file
+        const response = await fetch('articles.json?' + Date.now());
+        const data = await response.json();
+        publishedArticles = data.articles || [];
+        
+        // Store in localStorage for admin editing
+        localStorage.setItem('userArticles', JSON.stringify(publishedArticles));
+    } catch (error) {
+        console.error('Error loading articles:', error);
+        publishedArticles = JSON.parse(localStorage.getItem('userArticles') || '[]');
+    }
+    
+    displayAdminArticles();
+}
+
+function displayAdminArticles() {
     const container = document.getElementById('articlesContainer');
     if (!container) return;
     
     const articles = JSON.parse(localStorage.getItem('userArticles') || '[]');
     container.innerHTML = '';
     
+    // Add export button at the top
+    const exportSection = document.createElement('div');
+    exportSection.className = 'export-section';
+    exportSection.innerHTML = `
+        <button class="export-btn" onclick="exportArticlesJSON()">📥 Download articles.json</button>
+        <p class="export-hint">After adding/deleting articles, download this file and replace articles.json in your repository to publish changes for all visitors.</p>
+    `;
+    container.appendChild(exportSection);
+    
     if (articles.length === 0) {
-        container.innerHTML = '<p style="color: #999; font-style: italic;">No articles published yet.</p>';
+        const noArticles = document.createElement('p');
+        noArticles.style.cssText = 'color: #999; font-style: italic; margin-top: 20px;';
+        noArticles.textContent = 'No articles published yet.';
+        container.appendChild(noArticles);
         return;
     }
     
@@ -206,7 +241,7 @@ function publishArticle() {
         title,
         category,
         content,
-        excerpt: content.substring(0, 150) + '...',
+        excerpt: content.substring(0, 150).replace(/\n/g, ' ') + '...',
         date: new Date().toLocaleDateString('en-US', { 
             year: 'numeric', 
             month: 'long', 
@@ -220,8 +255,8 @@ function publishArticle() {
     localStorage.setItem('userArticles', JSON.stringify(articles));
 
     clearArticleForm();
-    loadArticles();
-    showNotification('Article published successfully!');
+    displayAdminArticles();
+    showNotification('Article added! Download articles.json to publish for all visitors.');
 }
 
 function deleteArticle(index) {
@@ -229,9 +264,31 @@ function deleteArticle(index) {
         let articles = JSON.parse(localStorage.getItem('userArticles') || '[]');
         articles.splice(index, 1);
         localStorage.setItem('userArticles', JSON.stringify(articles));
-        loadArticles();
-        showNotification('Article deleted');
+        displayAdminArticles();
+        showNotification('Article deleted. Download articles.json to update for all visitors.');
     }
+}
+
+function exportArticlesJSON() {
+    const articles = JSON.parse(localStorage.getItem('userArticles') || '[]');
+    const data = {
+        articles: articles,
+        lastUpdated: new Date().toISOString()
+    };
+    
+    const json = JSON.stringify(data, null, 4);
+    const blob = new Blob([json], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'articles.json';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    
+    showNotification('articles.json downloaded! Replace the file in your repository.');
 }
 
 function clearArticleForm() {

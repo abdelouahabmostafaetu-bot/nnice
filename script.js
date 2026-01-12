@@ -317,14 +317,24 @@ document.addEventListener('DOMContentLoaded', function() {
     loadFeaturedArticle();
 });
 
-function loadFeaturedArticle() {
+async function loadFeaturedArticle() {
     const container = document.getElementById('featuredArticleContainer');
     const noMessage = document.getElementById('noFeaturedMessage');
     
     if (!container) return;
     
-    // Get articles from localStorage
-    const articles = JSON.parse(localStorage.getItem('userArticles') || '[]');
+    let articles = [];
+    
+    try {
+        // Load articles from JSON file (visible to all visitors)
+        const response = await fetch('articles.json?' + Date.now());
+        const data = await response.json();
+        articles = data.articles || [];
+    } catch (error) {
+        console.error('Error loading articles:', error);
+        // Fallback to localStorage
+        articles = JSON.parse(localStorage.getItem('userArticles') || '[]');
+    }
     
     if (articles.length === 0) {
         container.style.display = 'none';
