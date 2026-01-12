@@ -5,13 +5,12 @@ document.addEventListener('DOMContentLoaded', function() {
     checkForFeaturedArticle();
 });
 
-// Check if coming from featured article link
+// Check if coming from featured article link - redirect to read-article page
 function checkForFeaturedArticle() {
     const storedArticle = sessionStorage.getItem('viewArticle');
     if (storedArticle) {
-        const article = JSON.parse(storedArticle);
-        sessionStorage.removeItem('viewArticle');
-        showArticleModal(article);
+        // Redirect to full article page
+        window.location.href = 'read-article.html';
     }
 }
 
@@ -41,7 +40,7 @@ function loadArticles() {
             <p class="article-excerpt">${escapeHtml(article.excerpt)}</p>
             <div class="article-footer">
                 <span class="read-time">📖 ${article.readTime} min read</span>
-                <button class="read-more-btn" onclick="viewArticle(${article.id})">Read More →</button>
+                <button class="read-more-btn" onclick="viewArticle(${article.id})">Read Article →</button>
             </div>
         </article>
     `).join('');
@@ -52,7 +51,9 @@ function viewArticle(id) {
     const article = articles.find(a => a.id === id);
     
     if (article) {
-        showArticleModal(article);
+        // Store article and redirect to full reading page
+        sessionStorage.setItem('viewArticle', JSON.stringify(article));
+        window.location.href = 'read-article.html';
     }
 }
 

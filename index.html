@@ -2,12 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
     <meta name="theme-color" content="#8b7355">
+    <meta name="description" content="Abdelouahab Mostafa - Mathematics Master's Student at University of Mila">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="format-detection" content="telephone=no">
     <title>Abdelouahab Mostafa - Portfolio</title>
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="style.css" as="style">
+    <link rel="preload" href="script.js" as="script">
+    <link rel="preload" href="mostafa12.png" as="image">
+    
+    <!-- DNS prefetch for external resources -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    
+    <!-- Touch icons for iOS -->
+    <link rel="apple-touch-icon" href="mostafa12.png">
+    
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -79,41 +94,22 @@
 
         <section class="section library-section">
             <h2 class="section-heading">My Library</h2>
-            <p class="content" style="text-align: center; margin-bottom: 30px;">
+            <p class="content" style="text-align: center; margin-bottom: 20px;">
                 A curated collection of academic resources and books
             </p>
-            
-            <div class="library-stats">
-                <div class="stat">
-                    <span class="stat-number" id="totalBooks">1</span>
-                    <span class="stat-label">Books</span>
+
+            <!-- Featured Book - Compact -->
+            <div class="featured-book-compact" onclick="window.open('https://drive.usercontent.google.com/download?id=1cT_TfUb-FE4PX37GBYMVqg-8I2AnhUyF&export=download&authuser=2&confirm=t', '_blank')">
+                <span class="book-badge-small">📚</span>
+                <img src="cover/Sharpening Mathematical Analysis Skills.jpg" alt="Book Cover" class="book-cover-small">
+                <div class="book-info-compact">
+                    <h3 class="book-title-compact">Sharpening Mathematical Analysis Skills</h3>
+                    <span class="book-author-compact">Alina Sîntămărian & Ovidiu Furdui</span>
                 </div>
+                <span class="book-download-icon">📥</span>
             </div>
 
-            <div class="books-grid" id="booksGrid">
-                <div class="book-card featured-book" data-category="Mathematics">
-                    <div class="featured-book-badge">⭐ Recommended</div>
-                    <div class="book-cover">
-                        <img src="cover/Sharpening Mathematical Analysis Skills.jpg" alt="Sharpening Mathematical Analysis Skills">
-                        <div class="book-overlay">
-                            <button class="download-btn" onclick="window.open('https://drive.usercontent.google.com/download?id=1cT_TfUb-FE4PX37GBYMVqg-8I2AnhUyF&export=download&authuser=2&confirm=t&uuid=9c04254c-34fa-489c-b39f-eef38f886187&at=ANTm3cx8vMrnXtjPzfipUAMRgytC:1767796326672', '_blank')">
-                                📥 Download
-                            </button>
-                        </div>
-                    </div>
-                    <div class="book-info">
-                        <h3 class="book-title">Sharpening Mathematical Analysis Skills</h3>
-                        <p class="book-author">by Alina Sîntămărian & Ovidiu Furdui</p>
-                        <p class="book-details">
-                            <span class="book-category">Mathematics</span>
-                            <span class="book-year">2024</span>
-                        </p>
-                        <p class="book-description">A comprehensive guide to sharpening your mathematical analysis skills.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div style="text-align: center; margin-top: 30px;">
+            <div style="text-align: center; margin-top: 20px;">
                 <a href="library-page.html" class="topics-link">📚 Browse Full Library →</a>
             </div>
         </section>
@@ -126,17 +122,16 @@
                 Explore my thoughts, research insights, and articles on various topics
             </p>
             
-            <!-- Featured Article -->
+            <!-- Featured Article - Compact -->
             <div class="featured-article-container" id="featuredArticleContainer">
-                <div class="featured-article" id="featuredArticle">
-                    <div class="featured-badge">⭐ Featured Article</div>
-                    <h3 class="featured-article-title" id="featuredArticleTitle">Loading...</h3>
-                    <p class="featured-article-excerpt" id="featuredArticleExcerpt"></p>
-                    <div class="featured-article-meta">
-                        <span class="featured-article-category" id="featuredArticleCategory"></span>
-                        <span class="featured-article-date" id="featuredArticleDate"></span>
+                <div class="featured-article-compact" id="featuredArticle" onclick="viewFeaturedArticle()">
+                    <span class="featured-badge-small">⭐</span>
+                    <h3 class="featured-article-title-compact" id="featuredArticleTitle">Loading...</h3>
+                    <div class="featured-compact-meta">
+                        <span class="featured-category-small" id="featuredArticleCategory"></span>
+                        <span class="featured-date-small" id="featuredArticleDate"></span>
                     </div>
-                    <button class="read-more-btn" id="readFeaturedBtn" onclick="viewFeaturedArticle()">Read Article →</button>
+                    <span class="featured-arrow">→</span>
                 </div>
             </div>
             <p class="no-featured-message" id="noFeaturedMessage" style="display: none; text-align: center; color: #666; margin: 20px 0;">

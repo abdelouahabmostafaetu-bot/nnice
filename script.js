@@ -1,33 +1,45 @@
 // Mobile detection and optimization
 const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
+// Performance: Use requestIdleCallback for non-critical tasks
+const scheduleTask = window.requestIdleCallback || ((cb) => setTimeout(cb, 1));
+
 // Optimize performance for mobile
 if (isMobile) {
     // Disable heavy animations
     document.body.classList.add('mobile-device');
     
     // Remove spotlight and floating shapes on mobile
-    const spotlight = document.getElementById('spotlight');
-    const floatingShapes = document.querySelector('.floating-shapes');
-    if (spotlight) spotlight.style.display = 'none';
-    if (floatingShapes) floatingShapes.style.display = 'none';
+    scheduleTask(() => {
+        const spotlight = document.getElementById('spotlight');
+        const floatingShapes = document.querySelector('.floating-shapes');
+        if (spotlight) spotlight.style.display = 'none';
+        if (floatingShapes) floatingShapes.style.display = 'none';
+    });
 }
 
-// Scroll progress bar
+// Throttled scroll handler for better performance
+let scrollTicking = false;
 window.addEventListener('scroll', () => {
-    const scrollProgress = document.getElementById('scrollProgress');
-    const scrollTop = document.getElementById('scrollTop');
-    const windowHeight = window.innerHeight;
-    const documentHeight = document.documentElement.scrollHeight;
-    const scrolled = window.pageYOffset;
-    const progress = (scrolled / (documentHeight - windowHeight)) * 100;
-    scrollProgress.style.width = progress + '%';
-    
-    // Show scroll to top button
-    if (scrolled > 300) {
-        scrollTop.classList.add('visible');
-    } else {
-        scrollTop.classList.remove('visible');
+    if (!scrollTicking) {
+        requestAnimationFrame(() => {
+            const scrollProgress = document.getElementById('scrollProgress');
+            const scrollTop = document.getElementById('scrollTop');
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight;
+            const scrolled = window.pageYOffset;
+            const progress = (scrolled / (documentHeight - windowHeight)) * 100;
+            scrollProgress.style.width = progress + '%';
+            
+            // Show scroll to top button
+            if (scrolled > 300) {
+                scrollTop.classList.add('visible');
+            } else {
+                scrollTop.classList.remove('visible');
+            }
+            scrollTicking = false;
+        });
+        scrollTicking = true;
     }
 }, { passive: true });
 
@@ -36,12 +48,19 @@ document.getElementById('scrollTop').addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
-// Spotlight effect (mouse follower)
+// Spotlight effect with throttling for smooth movement
+let spotlightTicking = false;
 const spotlight = document.getElementById('spotlight');
 document.addEventListener('mousemove', (e) => {
-    spotlight.style.left = (e.clientX - 150) + 'px';
-    spotlight.style.top = (e.clientY - 150) + 'px';
-});
+    if (!spotlightTicking && spotlight) {
+        requestAnimationFrame(() => {
+            spotlight.style.left = (e.clientX - 150) + 'px';
+            spotlight.style.top = (e.clientY - 150) + 'px';
+            spotlightTicking = false;
+        });
+        spotlightTicking = true;
+    }
+}, { passive: true });
 
 // Create floating particles
 function createParticles() {
@@ -316,10 +335,8 @@ function loadFeaturedArticle() {
     // Get the most recent article as featured
     featuredArticleData = articles[0];
     
-    // Update UI
+    // Update UI - compact version (just title and meta)
     document.getElementById('featuredArticleTitle').textContent = featuredArticleData.title;
-    document.getElementById('featuredArticleExcerpt').textContent = 
-        featuredArticleData.content.substring(0, 200).replace(/<[^>]*>/g, '') + '...';
     document.getElementById('featuredArticleCategory').textContent = featuredArticleData.category;
     document.getElementById('featuredArticleDate').textContent = featuredArticleData.date;
     
@@ -329,8 +346,8 @@ function loadFeaturedArticle() {
 
 function viewFeaturedArticle() {
     if (featuredArticleData) {
-        // Store article data and redirect to topics page
+        // Store article data and redirect to read-article page
         sessionStorage.setItem('viewArticle', JSON.stringify(featuredArticleData));
-        window.location.href = 'topics.html';
+        window.location.href = 'read-article.html';
     }
 }
