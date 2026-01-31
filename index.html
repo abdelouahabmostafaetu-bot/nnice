@@ -2,198 +2,126 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
-    <meta name="theme-color" content="#8b7355">
-    <meta name="description" content="Abdelouahab Mostafa - Mathematics Master's Student at University of Mila">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="format-detection" content="telephone=no">
-    <title>Abdelouahab Mostafa - Portfolio</title>
-    
-    <!-- Preload critical resources -->
-    <link rel="preload" href="style.css" as="style">
-    <link rel="preload" href="script.js" as="script">
-    <link rel="preload" href="mostafa12.png" as="image">
-    
-    <!-- DNS prefetch for external resources -->
-    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
-    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
-    
-    <!-- Touch icons for iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1a1a2e">
+    <meta name="description" content="Mathematics Master's Student at University of Mila">
+    <title>Mathematics Student</title>
     <link rel="apple-touch-icon" href="mostafa12.png">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+Pro:wght@300;400;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="scroll-progress" id="scrollProgress"></div>
-    <div class="scroll-top" id="scrollTop">↑</div>
-    <div class="spotlight" id="spotlight"></div>
-    
-    <!-- Admin Panel Link -->
-    <a href="admin.html" class="admin-login-btn main-page-admin">🔐 Admin</a>
-    
-    <div class="floating-nav" id="floatingNav">
-        <div class="nav-dot" data-tooltip="Home" data-section="0"></div>
-        <div class="nav-dot" data-tooltip="About" data-section="1"></div>
-        <div class="nav-dot" data-tooltip="Education" data-section="2"></div>
-        <div class="nav-dot" data-tooltip="Library" data-section="3"></div>
-        <div class="nav-dot" data-tooltip="Topics" data-section="topics" data-link="topics.html"></div>
-        <div class="nav-dot" data-tooltip="Contact" data-section="4"></div>
+    <!-- Mathematical Background Elements -->
+    <div class="math-bg">
+        <span class="formula f1">∫</span>
+        <span class="formula f2">∑</span>
+        <span class="formula f3">∂</span>
+        <span class="formula f4">π</span>
+        <span class="formula f5">∞</span>
+        <span class="formula f6">√</span>
+        <span class="formula f7">Δ</span>
+        <span class="formula f8">∇</span>
+        <span class="formula f9">ε</span>
+        <span class="formula f10">λ</span>
+        <span class="formula f11">θ</span>
+        <span class="formula f12">Ω</span>
     </div>
-    
-    <div class="page">
-        <header>
-            <div class="profile-image tilt-card" id="profileImage">
-                <img src="mostafa12.png" alt="Abdelouahab Mostafa" onerror="this.style.display='none'; this.parentElement.innerHTML='AM';">
+
+    <!-- Main Card -->
+    <main class="card">
+        <!-- Decorative Line -->
+        <div class="top-accent"></div>
+
+        <!-- Profile Section -->
+        <div class="profile-section">
+            <div class="profile-wrapper">
+                <div class="profile-border"></div>
+                <div class="profile-photo" style="background-image: url('mostafa12.png');"></div>
             </div>
-            <h1 class="name">Abdelouahab Mostafa<span class="typing-cursor"></span></h1>
-            <p class="tagline" id="tagline"></p>
-            <p class="university">University of Mila</p>
+        </div>
+
+        <!-- Content -->
+        <div class="content">
+            <div class="badge">
+                <span class="badge-icon">∑</span>
+                Mathematics
+            </div>
+
+            <h1 class="title">Master's Degree Student</h1>
             
-            <div class="stats-bar">
+            <div class="university">
+                <svg class="uni-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M12 3L1 9l11 6 9-4.91V17M5 13.18v4L12 21l7-3.82v-4"/>
+                </svg>
+                University of Mila
+            </div>
+
+            <div class="divider">
+                <span class="divider-symbol">◆</span>
+            </div>
+
+            <!-- Stats -->
+            <div class="stats">
                 <div class="stat">
                     <span class="stat-number">2026</span>
-                    <span class="stat-label">Current Year</span>
+                    <span class="stat-text">Academic Year</span>
                 </div>
+                <div class="stat-separator"></div>
                 <div class="stat">
                     <span class="stat-number">Master's</span>
-                    <span class="stat-label">Degree Level</span>
+                    <span class="stat-text">Degree Level</span>
                 </div>
+                <div class="stat-separator"></div>
                 <div class="stat">
                     <span class="stat-number">Mila</span>
-                    <span class="stat-label">University</span>
+                    <span class="stat-text">Algeria</span>
                 </div>
             </div>
-        </header>
 
-        <div class="ornament">❦</div>
+            <!-- Quote -->
+            <blockquote class="quote">
+                "Mathematics is the queen of the sciences"
+                <cite>— Carl Friedrich Gauss</cite>
+            </blockquote>
 
-        <section class="section">
-            <h2 class="section-heading">About Me</h2>
-            <p class="content">
-                I am currently pursuing a Master's degree at the University of Mila, where I am dedicated to academic excellence and scholarly pursuits. My educational journey is marked by a commitment to rigorous study, critical analysis, and the development of expertise in my chosen field.
-            </p>
-            <div id="daily-mathematics-quote" class="quote-box"></div>
-        </section>
-
-        <div class="ornament">❦</div>
-
-        <section class="section">
-            <h2 class="section-heading">Education</h2>
-            <div class="education-item">
-                <h3>Master's Degree</h3>
-                <h4>University of Mila</h4>
-                <p class="content">
-                    Engaged in advanced academic studies with emphasis on research methodology, theoretical frameworks, and practical applications within my field of specialization.
-                </p>
-            </div>
-        </section>
-
-        <div class="ornament">❦</div>
-
-        <section class="section library-section">
-            <h2 class="section-heading">My Library</h2>
-            <p class="content" style="text-align: center; margin-bottom: 20px;">
-                A curated collection of academic resources and books
-            </p>
-
-            <!-- Featured Book - Compact -->
-            <div class="featured-book-compact" onclick="window.open('https://drive.usercontent.google.com/download?id=1cT_TfUb-FE4PX37GBYMVqg-8I2AnhUyF&export=download&authuser=2&confirm=t', '_blank')">
-                <span class="book-badge-small">📚</span>
-                <img src="cover/Sharpening Mathematical Analysis Skills.jpg" alt="Book Cover" class="book-cover-small">
-                <div class="book-info-compact">
-                    <h3 class="book-title-compact">Sharpening Mathematical Analysis Skills</h3>
-                    <span class="book-author-compact">Alina Sîntămărian & Ovidiu Furdui</span>
-                </div>
-                <span class="book-download-icon">📥</span>
-            </div>
-
-            <div style="text-align: center; margin-top: 20px;">
-                <a href="library-page.html" class="topics-link">📚 Browse Full Library →</a>
-            </div>
-        </section>
-
-        <div class="ornament">❦</div>
-
-        <section class="section topics-preview-section">
-            <h2 class="section-heading">Topics & Articles</h2>
-            <p class="content" style="text-align: center; margin-bottom: 20px;">
-                Explore my thoughts, research insights, and articles on various topics
-            </p>
-            
-            <!-- Featured Article - Compact -->
-            <div class="featured-article-container" id="featuredArticleContainer">
-                <div class="featured-article-compact" id="featuredArticle" onclick="viewFeaturedArticle()">
-                    <span class="featured-badge-small">⭐</span>
-                    <h3 class="featured-article-title-compact" id="featuredArticleTitle">Loading...</h3>
-                    <div class="featured-compact-meta">
-                        <span class="featured-category-small" id="featuredArticleCategory"></span>
-                        <span class="featured-date-small" id="featuredArticleDate"></span>
-                    </div>
-                    <span class="featured-arrow">→</span>
-                </div>
-            </div>
-            <p class="no-featured-message" id="noFeaturedMessage" style="display: none; text-align: center; color: #666; margin: 20px 0;">
-                No articles yet. Check back soon!
-            </p>
-            
-            <div style="text-align: center; margin-top: 25px;">
-                <a href="topics.html" class="topics-link">✨ Browse All Topics →</a>
-            </div>
-        </section>
-
-        <div class="ornament">❦</div>
-
-        <section class="section">
-            <h2 class="section-heading">Get In Touch</h2>
-            <div class="contact-info">
-                <p style="font-size: 1.2rem; margin-bottom: 25px;">For academic collaborations or professional inquiries</p>
+            <!-- Contact Section -->
+            <div class="contact-section">
+                <h2 class="contact-title">Get in Touch</h2>
                 
-                <div class="contact-methods">
-                    <div class="contact-method">
-                        <div class="contact-icon">📧</div>
-                        <p><strong>Email</strong></p>
-                        <p>abdelouahab.mostafa.etu@centre-univ-mila.dz</p>
-                    </div>
-                    <div class="contact-method">
+                <div class="contact-links">
+                    <a href="mailto:abdelouahab.mostafa.etu@centre-univ-mila.dz" class="contact-item">
                         <div class="contact-icon">
-                            <img src="https://flagcdn.com/w80/dz.png" alt="Algeria Flag" style="width: 40px; height: 30px; border-radius: 3px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                <polyline points="22,6 12,13 2,6"/>
+                            </svg>
                         </div>
-                        <p><strong>Location</strong></p>
-                        <p>Mila, Algeria</p>
-                    </div>
-                </div>
-
-                <div class="social-links">
-                    <a href="mailto:abdelouahab.mostafa.etu@centre-univ-mila.dz" class="social-btn" title="Email">📧</a>
-                    <a href="https://www.researchgate.net/profile/Mostafa-Abdelouahab" target="_blank" rel="noopener noreferrer" class="social-btn social-btn-logo" title="ResearchGate">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/ResearchGate_icon_SVG.svg" alt="ResearchGate" style="width: 32px; height: 32px; object-fit: contain;">
+                        <div class="contact-info">
+                            <span class="contact-label">Email</span>
+                            <span class="contact-value">abdelouahab.mostafa.etu@centre-univ-mila.dz</span>
+                        </div>
                     </a>
-                    <a href="https://math.stackexchange.com/users/1183190/epsilon" target="_blank" rel="noopener noreferrer" class="social-btn social-btn-logo" title="Math Stack Exchange">
-                        <img src="https://cdn.sstatic.net/Sites/math/Img/apple-touch-icon.png?v=3c3b72ce8e89" alt="Math Stack Exchange" style="width: 32px; height: 32px; object-fit: contain;">
+                    
+                    <a href="https://www.researchgate.net/profile/Mostafa-Abdelouahab" target="_blank" rel="noopener noreferrer" class="contact-item">
+                        <div class="contact-icon rg-icon">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M19.586 0c-.818 0-1.508.19-2.073.565-.563.377-.97.936-1.213 1.68a3.193 3.193 0 0 0-.112.437 8.365 8.365 0 0 0-.078.53 9 9 0 0 0-.05.727c-.01.282-.013.621-.013 1.016a31.121 31.121 0 0 0 .014 1.017 9 9 0 0 0 .05.727 7.946 7.946 0 0 0 .078.53h-.005a3.334 3.334 0 0 0 .112.438c.244.743.65 1.303 1.214 1.68.565.376 1.256.564 2.075.564.8 0 1.536-.213 2.105-.603.57-.39.94-.916 1.175-1.65.076-.235.135-.558.177-.93a10.9 10.9 0 0 0 .043-1.207v-.82h-3.842v1.615h2.015c0 .201-.011.354-.032.507a1.724 1.724 0 0 1-.1.39c-.109.291-.298.507-.573.65-.274.144-.633.216-1.076.216-.443 0-.81-.103-1.1-.309-.29-.206-.505-.5-.64-.887a3.69 3.69 0 0 1-.157-.677 5.963 5.963 0 0 1-.04-.727v-.997c0-.296.013-.547.04-.753.026-.205.065-.398.116-.58.142-.39.356-.683.64-.88.283-.197.65-.296 1.1-.296.36 0 .655.066.876.2.22.134.395.324.527.57l1.515-.94c-.273-.532-.673-.927-1.2-1.18C21.074.138 20.376 0 19.586 0zM6.347 5.768V24h4.138V5.768H6.347z"/>
+                            </svg>
+                        </div>
+                        <div class="contact-info">
+                            <span class="contact-label">ResearchGate</span>
+                            <span class="contact-value">Mostafa Abdelouahab</span>
+                        </div>
                     </a>
                 </div>
-                
-                <a href="mailto:abdelouahab.mostafa.etu@centre-univ-mila.dz" class="contact-btn">Send Message</a>
             </div>
-        </section>
+        </div>
 
-        <footer>
-            <p>© 2026 Abdelouahab Mostafa. All rights reserved.</p>
-            <p style="margin-top: 10px; font-size: 0.85rem;">Designed with excellence in mind</p>
-        </footer>
-    </div>
-
-    <div class="floating-shapes">
-        <div class="floating-shape"></div>
-        <div class="floating-shape"></div>
-        <div class="floating-shape"></div>
-    </div>
-
-    <script src="daily-quote.js"></script>
-    <script src="library.js"></script>
-    <script src="script.js"></script>
+        <!-- Bottom Accent -->
+        <div class="bottom-pattern">
+            <span>∫</span><span>∑</span><span>∂</span><span>∇</span><span>∞</span>
+        </div>
+    </main>
 </body>
 </html>
 
